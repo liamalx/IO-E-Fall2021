@@ -1,0 +1,115 @@
+<html>
+<head>
+	<link rel="stylesheet" href="design.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.5/p5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.5/addons/p5.dom.js"></script>
+	<script src="source/p5.speech.js"></script>
+	<script src="https://unpkg.com/typeit@8.0.7/dist/index.umd.js"></script>
+	<script>
+
+
+	 var myVoice = new p5.Speech(); // new P5.Speech object
+
+// Vanessa, Austin, Vanessa, Austin, Vanessa, Austin, 
+var character = ["VANESSA","AUSTIN","VANESSA","AUSTIN","VANESSA","AUSTIN","VANESSA","AUSTIN","VANESSA","AUSTIN"];
+	var script = ["I love you, Mr. Powers.", "And I love you, Mrs. Powers.", "Let's go out on the terrace. It's a beautiful night, we can look at the stars.","Look how beautiful the night sky is.","Isn't that the big dipper?","Yeah, and that looks just like Uranus.","Austin!"];
+	
+	var counter = 0; // counter for the voices
+	const lastCh = document.getElementById("lastCh");
+	var menuLoaded = 0;
+	
+	 myVoice.interrupt = true; //When this is set to true it does not accept double clicks to cue more than the one speech
+	
+	 myVoice.onEnd = speechEnded; //when the dialog ends call a funciton
+	
+
+	function setup(){
+	myVoice.listVoices();
+	// createCanvas(vw, vh);
+	}
+
+	function draw(){
+		
+		// why draw when you can click?
+	}
+	// when the mouse is clicked play the sound.
+	function mousePressed()
+	{
+		
+		
+		// if in bounds:
+		if(mouseX<window.innerWidth && mouseY<height) {
+			if (counter%2==0){
+				console.log("made it");
+		// change name of varible
+			myVoice.setVoice(10);
+		// vanessa
+		} 
+
+		else if(counter%1==0){
+		// change name of varible
+		myVoice.setVoice(7);
+		// vanessa
+		}
+		myVoice.speak(script[counter]);
+	
+		// document.getElementById("currentLine").innerHTML = script[lol];
+		// console.log(lol);
+		}
+	}
+
+	
+// function speechStarted(){
+// 	document.getElementById("currentLineP").innerHTML = script[lol];
+// }
+	function speechEnded()
+	{
+		
+		document.getElementById("lastLine").innerHTML = script[counter];
+		counter++; // increment
+		document.getElementById("currentCharacter").innerHTML = character[counter];
+		document.getElementById("currentLineP").innerHTML = script[counter];
+		
+		// background(255, 0, 0);
+		
+	}
+
+</script>
+</head>
+<body>
+	<div class="grid">
+<div class="cell col1" id="header"><h1><b>Austin powers: the spy who shagged me</b></h1></div>
+
+<div class="cell col4">
+	<h2>last line</h2>
+</div>
+<!-- last line from script -->
+<div class="col2" id="lastLine">
+	<p id="LastLineP"></p>
+</div>
+<div class="cell col4"></div>
+
+<!-- current liine from script -->
+<div class="cell col4">
+	<h2>Current line</h2>
+</div>
+<div class="cell col2"id="currentLine">
+	<h2 id="currentCharacter">VANESSA</h2>
+	<p id="currentLineP">I love you, Mr. Powers.</p>
+</div>
+<div class="cell col4"></div>
+<!-- next line from script -->
+
+	<div class="cell col4">
+		<h2>Next line</h2>
+	</div>
+	<div class="cell col2"id="nextLine">
+		<h2 id="nextCharacter"></h2>
+		<p id="nextLineP"></p>
+	</div>
+	<div class="cell col4"></div>
+
+</div>
+</div>
+</body>
+</html>
