@@ -1,0 +1,65 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 10px;
+}
+h3{
+    margin-bottom: 0%;
+}
+
+p{
+    margin-top: 0;
+}
+
+body {
+    background: rgb(255, 0, 245);
+
+}
+
+.cell {
+    background: rgba(53, 59, 217, 0.36);
+    height: 140px;
+
+}
+
+#info{
+    background: grey;
+    padding: 10px;
+}
+.statusText{
+    display: inline;
+}
+
+/* grid constructor classes */
+.col1 {
+    grid-column-end: span 12;
+
+}
+
+.col8 {
+    grid-column-end: span 8;
+}
+.col2 {
+    grid-column-end: span 6;
+    background: rgb(116, 198, 46)
+}
+
+.col3 {
+    grid-column-end: span 4;
+    /* background: rgb(198, 110, 46) */
+}
+
+.col4 {
+    grid-column-end: span 3;
+
+}
+
+.col6 {
+    grid-column-end: span 2;
+
+}
+
+.col12 {
+    grid-column-end: span 1;
+
+}
